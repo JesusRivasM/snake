@@ -11,6 +11,12 @@ import javax.swing.JPanel;
 
 
 public class WelcomeScreen extends JPanel{
+        final ActionListener Alis = new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				goButtonActionListener();
+			}
+		};
+
 	JLabel title;
 	JButton go;
 	JButton quit;
@@ -42,17 +48,9 @@ public class WelcomeScreen extends JPanel{
 		go = new JButton("New Game");
 		quit = new JButton("Quit");	
 		
-		go.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				goButtonActionListener();
-			}
-		});
+		go.addActionListener(Alis);
 		
-		quit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				 quitButtonActionListener();
-			}
-		});
+		quit.addActionListener(Alis);
 		
 		add(go);
 		add(quit);

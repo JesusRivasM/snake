@@ -42,22 +42,38 @@ public class PlayerSelectScreen extends JPanel {
 	
 	public PlayerSelectScreen(MainWindow mw){
 		this.mw = mw;
+                //EXTRACIONES
+		BoxLayout refac_2 = (new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		JLabel Lal = new JLabel("Select Players: ");
+                JLabel La2 = new JLabel("Default: 1Player");
+                JRadioButton Ra1 =  new JRadioButton("1 Player(Default)");
+                JRadioButton Ra2 =  new JRadioButton("2 Players");
+                JRadioButton Ra3 =  new JRadioButton("3 Players");  
+                 ActionListener ac1 = new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				playerOptions();
+			}
+                 };
+                ActionListener act2= new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				goButtonActionListener();
+			}
+		};
+                setLayout(refac_2);
 		
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		
-		JLabel mess = new JLabel("Select Players: ");
+		JLabel mess = Lal;
 		add(mess);
 		
-		JLabel uc = new JLabel("Default: 1Player");
+		JLabel uc = La2 ;
 		add(uc);
 		
 		//set up radio buttons
 		
-		opt1 = new JRadioButton("1 Player(Default)");
+		opt1 = Ra1;
 		opt1.setSelected(true);
 		
-		opt2 = new JRadioButton("2 Players");
-		opt3 = new JRadioButton("3 Players");
+		opt2 = Ra2;
+		opt3 = Ra3;
 		
 		ButtonGroup grp = new ButtonGroup();
 		grp.add(opt1);
@@ -68,37 +84,17 @@ public class PlayerSelectScreen extends JPanel {
 		add(opt2);
 		add(opt3);
 
-		opt1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				playerOptions();
-			}
-		});
-		opt2.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				playerOptions();
-			}
-		});
+		opt1.addActionListener(ac1);
+		opt2.addActionListener(ac1);
 		
-		opt3.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				playerOptions();
-			}
-		});
+		opt3.addActionListener(ac1);
 		
 		go = new JButton("Customize Board");
 		quit = new JButton("Back");	
 		
-		go.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				goButtonActionListener();
-			}
-		});
+		go.addActionListener(act2);
 		
-		quit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				 quitButtonActionListener();
-			}
-		});
+		quit.addActionListener(act2);
 		
 		add(go);
 		add(quit);
